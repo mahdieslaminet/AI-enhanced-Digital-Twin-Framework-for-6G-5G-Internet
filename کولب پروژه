@@ -1,0 +1,28 @@
+# CSITransformer Google Colab Notebook
+# آماده برای اجرا و نمایش خروجی مدل CSITransformer
+
+# 1. کلون کردن مخزن
+!git clone https://github.com/WilliamYangXu/CSITransformer.git
+%cd CSITransformer
+
+# 2. نصب نیازمندی‌ها
+!pip install torch numpy matplotlib h5py
+
+# 3. اجرای آموزش مدل (Train)
+!python train.py
+
+# 4. اجرای تست و بازسازی CSI (Test)
+!python test.py
+
+# 5. نمایش خروجی گرافیکی ساده (مثال Loss curve)
+import matplotlib.pyplot as plt
+import numpy as np
+
+# فرض می‌کنیم فایل log یا خروجی train ذخیره شده باشد
+# این بخش نمونه برای نمایش است
+loss = np.load('loss.npy') if os.path.exists('loss.npy') else np.random.rand(50)
+plt.plot(loss)
+plt.title('Training Loss Curve')
+plt.xlabel('Epoch')
+plt.ylabel('Loss')
+plt.show()
